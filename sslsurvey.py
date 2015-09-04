@@ -1,5 +1,6 @@
 from collections import namedtuple
 import csv
+import datetime
 import requests
 from requests.exceptions import SSLError, ConnectionError, ConnectTimeout, ReadTimeout
 from jinja2 import Environment, FileSystemLoader
@@ -100,4 +101,7 @@ for row in csv.DictReader(data.split("\n")):
 print "Got data:", results
 
 # output results
-open(os.path.join(this_dir, 'output/index.html'), 'w').write(j2_env.get_template('index.html').render(results=results))
+open(os.path.join(this_dir, 'output/index.html'), 'w').write(j2_env.get_template('index.html').render(
+    results=results,
+    generated_date=datetime.datetime.now(),
+))
