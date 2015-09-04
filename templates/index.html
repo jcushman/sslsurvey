@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            .succeeded{
+                background-color: #9EE19E;
+            }
+            .failed{
+                background-color: #D64D4D;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Rank</th>
+                <th>Media</th>
+                <th>Representative URL</th>
+                <th>Result</th>
+            </tr>
+            {% for result in results %}
+                <tr class="{% if result.ssl_support %}succeeded{% else %}failed{% endif %}">
+                    <td>{{ result.rank }}</td>
+                    <td>{{ result.name }}</td>
+                    <td><a href="{{ result.url }}">{{ result.url }}</a></td>
+                    <td>{{ result.message or "OK" }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

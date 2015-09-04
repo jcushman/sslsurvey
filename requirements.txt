@@ -1,0 +1,2 @@
+requests[security]==2.7.0
+Jinja2==2.8
